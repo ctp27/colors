@@ -9,8 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceManager;
 
-import com.google.developer.colorvalue.service.NotificationJobService;
-
 public class SettingsActivity extends AppCompatActivity implements
         SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -49,6 +47,7 @@ public class SettingsActivity extends AppCompatActivity implements
             JobScheduler jobScheduler =
                     (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
             // TODO implement JobScheduler for notification {@link ScheduledJobService}
+
         }
     }
 

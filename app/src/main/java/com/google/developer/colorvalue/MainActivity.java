@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity
                 implements LoaderManager.LoaderCallbacks<Cursor>,
                 CardAdapter.CardAdapterCallbacks{
 
-
+    private static final String TAG = MainActivity.class.getSimpleName();
     private static final int CURSOR_LOADER_ID=2011;
 
     @BindView(R.id.recycler)
@@ -121,6 +122,14 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onCardClicked(Card clickedCard) {
-//        TODO: Launch new activity
+//        : Launch new activity
+        Log.d(TAG, clickedCard.getName());
+        Intent intent = new Intent(this,CardDetailsActivity.class);
+        intent.putExtra(CardDetailsActivity.INTENT_PARCEL_EXTRA,clickedCard);
+        startActivity(intent);
+
     }
+
+
+
 }

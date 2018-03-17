@@ -24,7 +24,11 @@
         <activity
             android:name=".AddCardActivity"
             android:label="@string/add_card_name"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
@@ -54,7 +58,13 @@
                 android:resource="@xml/card_widget" />
         </receiver>
 
-        <activity android:name=".CardDetailsActivity"></activity>
+        <activity android:name=".CardDetailsActivity"
+            android:parentActivityName=".MainActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>
