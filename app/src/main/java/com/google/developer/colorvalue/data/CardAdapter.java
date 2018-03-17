@@ -43,9 +43,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         // bind data to view
         mCursor.moveToPosition(position);
         String hexValue = mCursor.getString(mCursor.getColumnIndex(CardProvider.Contract.Columns.COLOR_HEX));
-
+        int color = Color.parseColor(hexValue);
+        holder.itemView.setBackgroundColor(color);
+        float luminance = Color.luminance(color);
+        holder.name.setTextColor((luminance >= 0.5) ? Color.BLACK : Color.WHITE);
         holder.name.setText(hexValue);
-        holder.itemView.setBackgroundColor(Color.parseColor(hexValue));
     }
 
     @Override
