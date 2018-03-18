@@ -12,11 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:padding="3dp"
+        android:padding="@dimen/widget_text_padding"
         android:background="@android:color/white"
         android:textAlignment="center"
         android:textColor="@android:color/primary_text_light"
-        android:textSize="13sp"
+        android:textSize="@dimen/widget_text_size"
         tools:text="#0099cc" />
 
 </RelativeLayout>

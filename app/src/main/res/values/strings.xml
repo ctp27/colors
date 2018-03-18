@@ -26,4 +26,9 @@
     <string name="notification_title_first">Notifications Active!</string>
     <string name="notification_summary_first">We will remind you to study everyday</string>
 
+    <string name="default_widget_text">Add a color!</string>
+    <string name="card_details_color_view_content_description">The color display</string>
+    <string name="card_content_description">Color Tile</string>
+    <string name="seek_red_content_description">Red component value setter</string>
+
 </resources>

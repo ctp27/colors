@@ -2,4 +2,17 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="color_text_size">0sp</dimen>
     <dimen name="widget_margin">8dp</dimen>
+    <dimen name="card_details_constraint_layout_padding_bottom">30dp</dimen>
+    <dimen name="card_details_color_view_layout_height">260dp</dimen>
+    <dimen name="card_details_color_name_margin_top">30dp</dimen>
+    <dimen name="card_details_color_name_textSize">40sp</dimen>
+    <dimen name="card_details_color_hex_margin_top">8dp</dimen>
+    <dimen name="card_layout_height">80dp</dimen>
+    <dimen name="card_margin_bottom">16dp</dimen>
+    <dimen name="widget_text_size">13sp</dimen>
+    <dimen name="widget_text_padding">3dp</dimen>
+    <dimen name="main_activity_relayout_padding_left">16dp</dimen>
+    <dimen name="main_activity_relayout_padding_right">16dp</dimen>
+    <dimen name="seek_red_margin_start">8dp</dimen>
+    <dimen name="seek_red_margin_top">8dp</dimen>
 </resources>

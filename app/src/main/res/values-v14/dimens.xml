@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="color_text_size">0sp</dimen>
     <dimen name="widget_margin">0dp</dimen>
+    <dimen name="card_details_constraint_layout_padding_bottom">30dp</dimen>
+    <dimen name="card_details_color_view_layout_height">260dp</dimen>
+    <dimen name="card_details_color_name_margin_top">30dp</dimen>
+    <dimen name="card_details_color_name_textSize">40sp</dimen>
+    <dimen name="card_details_color_hex_margin_top">8dp</dimen>
+    <dimen name="card_margin_bottom">16dp</dimen>
+    <dimen name="widget_text_padding">3dp</dimen>
+    <dimen name="main_activity_relayout_padding_left">16dp</dimen>
 </resources>

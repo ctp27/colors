@@ -58,26 +58,29 @@ public class NotificationUtils {
             notificationManager.createNotificationChannel(studyReminderChannel);
         }
 
+        /*  Build the notification  */
+        NotificationCompat.Builder notificationBuilder =
+                new NotificationCompat.Builder(context,notificationChannelId)
+                        .setColor(ContextCompat.getColor(context, R.color.colorPrimary))
+                        .setSmallIcon(R.drawable.ic_dialog_info)
+                        .setLargeIcon(getLargeIcon(context))
+                        .setDefaults(Notification.DEFAULT_VIBRATE)
+                        .setAutoCancel(true);
+
         if(isFirstNotification(context)){
             title = context.getString(R.string.notification_title_first);
             content = context.getString(R.string.notification_summary_first);
             setIsFirstNotification(context,false);
         }else {
-            title = context.getString(R.string.notification_title);
-            content = context.getString(R.string.notification_summary);
+            title = context.getString(R.string.time_to_practice);
+            content = context.getString(R.string.it_is_time_to_practice);
+            notificationBuilder.setContentIntent(contentIntent(context));
         }
 
-        /*  Build the notification  */
-        NotificationCompat.Builder notificationBuilder =
-                new NotificationCompat.Builder(context,notificationChannelId)
-                .setColor(ContextCompat.getColor(context, R.color.colorPrimary))
-                .setSmallIcon(R.drawable.ic_alarm_color_24dp)
-                .setLargeIcon(getLargeIcon(context))
-                .setContentTitle(title)
-                .setContentText(content)
-                .setDefaults(Notification.DEFAULT_VIBRATE)
-                .setContentIntent(contentIntent(context))
-                .setAutoCancel(true);
+        notificationBuilder.setContentTitle(title);
+        notificationBuilder.setContentText(content);
+
+
 
         /*  Set the priority to high for devices prior to Oreo and greater than 22*/
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {

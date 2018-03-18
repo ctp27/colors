@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:layout_marginBottom="16dp"
+    android:layout_height="@dimen/card_layout_height"
+    android:layout_marginBottom="@dimen/card_margin_bottom"
     android:foreground="?android:attr/selectableItemBackground"
     app:background="?android:attr/selectableItemBackground"
-    tools:backgroundTint="#E91E63">
+    tools:backgroundTint="#E91E63"
+    android:contentDescription="@string/card_content_description">
 
     <TextView
         android:id="@+id/color_name"

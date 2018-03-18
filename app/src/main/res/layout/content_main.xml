@@ -5,8 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
+    android:paddingStart="@dimen/main_activity_relayout_padding_left"
+    android:paddingEnd="@dimen/main_activity_relayout_padding_right"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main"
     tools:context="com.google.developer.colorvalue.MainActivity">

@@ -11,16 +11,17 @@
     android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="30dp">
+    android:paddingBottom="@dimen/card_details_constraint_layout_padding_bottom">
 
         <com.google.developer.colorvalue.ui.ColorView
             android:id="@+id/card_details_color_view"
             android:layout_width="match_parent"
-            android:layout_height="260dp"
+            android:layout_height="@dimen/card_details_color_view_layout_height"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:background="@color/colorAccent"
+            android:contentDescription="@string/card_details_color_view_content_description"
             app:show_text="false"/>
 
 
@@ -28,10 +29,8 @@
             android:id="@+id/card_details_color_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="30dp"
-            android:textSize="40sp"
+            android:layout_marginTop="@dimen/card_details_color_name_margin_top"
+            android:textSize="@dimen/card_details_color_name_textSize"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="@+id/card_details_color_view"
             app:layout_constraintStart_toStartOf="@+id/card_details_color_view"
@@ -42,8 +41,7 @@
             android:id="@+id/card_details_color_hex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginTop="@dimen/card_details_color_hex_margin_top"
             tools:text="#00F234"
             app:layout_constraintEnd_toEndOf="@+id/card_details_color_name"
             app:layout_constraintStart_toStartOf="@+id/card_details_color_name"

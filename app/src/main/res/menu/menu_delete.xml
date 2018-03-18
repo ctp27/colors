@@ -8,5 +8,6 @@
         android:icon="@drawable/ic_delete"
         android:title="@string/action_delete"
         app:showAsAction="ifRoom|withText"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:contentDescription="@string/action_delete"/>
 </menu>
