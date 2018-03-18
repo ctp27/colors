@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.developer.colorvalue.data.Card;
 import com.google.developer.colorvalue.data.CardAdapter;
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity
 
     @BindView(R.id.recycler)
     RecyclerView recycler;
+
+    @BindView(R.id.recycler_empty_text)
+    TextView recyclerEmptyView;
 
     private CardAdapter mCardAdapter;
 
@@ -107,11 +111,26 @@ public class MainActivity extends AppCompatActivity
 
         int id = loader.getId();
         if(id == CURSOR_LOADER_ID){
-            if(data!=null) {
+            if(data!=null && data.getCount()>0) {
+
+                hideDefaultMessage();
                 mCardAdapter.swapCursor(data);
+            }
+            else {
+                displayDefaultMessage();
             }
         }
 
+    }
+
+    private void hideDefaultMessage() {
+        recycler.setVisibility(View.VISIBLE);
+        recyclerEmptyView.setVisibility(View.INVISIBLE);
+    }
+
+    private void displayDefaultMessage() {
+        recyclerEmptyView.setVisibility(View.VISIBLE);
+        recycler.setVisibility(View.INVISIBLE);
     }
 
     @Override

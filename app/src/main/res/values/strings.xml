@@ -30,5 +30,6 @@
     <string name="card_details_color_view_content_description">The color display</string>
     <string name="card_content_description">Color Tile</string>
     <string name="seek_red_content_description">Red component value setter</string>
+    <string name="activity_main_empty_text">You have no saved color cards. Please add some colors using the Add (+) button</string>
 
 </resources>

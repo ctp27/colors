@@ -15,4 +15,5 @@
     <dimen name="main_activity_relayout_padding_right">16dp</dimen>
     <dimen name="seek_red_margin_start">8dp</dimen>
     <dimen name="seek_red_margin_top">8dp</dimen>
+    <dimen name="recycler_empty_text_size">15sp</dimen>
 </resources>

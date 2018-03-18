@@ -29,7 +29,7 @@ public class SettingsActivity extends AppCompatActivity implements
     private static final long BACK_OFF_TIMING = TimeUnit.MINUTES.toMillis(2);
     private static final long SYNC_INTERVAL_SECONDS = (int) TimeUnit.HOURS.toMillis(INTERVAL_IN_HOURS);
     private static final long SYNC_INTERVAL_SECONDS_TEST = TimeUnit.MINUTES.toMillis(INTERVAL__IN_MINUTES);
-    private static final long SYNC_INTERVAL_FLEX_TIME = TimeUnit.MINUTES.toMillis(20);
+    private static final long SYNC_INTERVAL_FLEX_TIME = TimeUnit.MINUTES.toMillis(16);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,12 +69,13 @@ public class SettingsActivity extends AppCompatActivity implements
                 NotificationUtils.setIsFirstNotification(this,true);
                 JobInfo.Builder jobInfoBuilder =
                         new JobInfo.Builder(JOB_ID, new ComponentName(this, NotificationJobService.class))
-                                .setPeriodic(SYNC_INTERVAL_SECONDS_TEST)
                                 .setPersisted(true)
                                 .setBackoffCriteria(BACK_OFF_TIMING,JobInfo.BACKOFF_POLICY_EXPONENTIAL);
 
                 if(Build.VERSION.SDK_INT >= 24){
                     jobInfoBuilder.setPeriodic(SYNC_INTERVAL_SECONDS_TEST,SYNC_INTERVAL_FLEX_TIME);
+                }else {
+                    jobInfoBuilder.setPeriodic(SYNC_INTERVAL_SECONDS_TEST);
                 }
 
                 JobInfo jobInfo = jobInfoBuilder.build();
