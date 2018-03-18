@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
         recycler.setAdapter(mCardAdapter);
         recycler.setHasFixedSize(true);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,7 +110,9 @@ public class MainActivity extends AppCompatActivity
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
         int id = loader.getId();
+
         if(id == CURSOR_LOADER_ID){
+
             if(data!=null && data.getCount()>0) {
 
                 hideDefaultMessage();
@@ -119,6 +121,7 @@ public class MainActivity extends AppCompatActivity
             else {
                 displayDefaultMessage();
             }
+
         }
 
     }

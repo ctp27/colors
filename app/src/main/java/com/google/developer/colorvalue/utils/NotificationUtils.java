@@ -6,12 +6,10 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 
@@ -67,16 +65,12 @@ public class NotificationUtils {
                         .setDefaults(Notification.DEFAULT_VIBRATE)
                         .setAutoCancel(true);
 
-        if(isFirstNotification(context)){
-            title = context.getString(R.string.notification_title_first);
-            content = context.getString(R.string.notification_summary_first);
-            setIsFirstNotification(context,false);
-        }else {
+            /*  Notifications turned on before. Time to set the reminder */
             title = context.getString(R.string.time_to_practice);
             content = context.getString(R.string.it_is_time_to_practice);
             notificationBuilder.setContentIntent(contentIntent(context));
-        }
 
+        /*  Set the title and the content   */
         notificationBuilder.setContentTitle(title);
         notificationBuilder.setContentText(content);
 
@@ -124,16 +118,5 @@ public class NotificationUtils {
         return BitmapFactory.decodeResource(res, R.mipmap.ic_launcher);
     }
 
-    public static void setIsFirstNotification(Context context, boolean isFirst) {
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean(PREF_IS_FIRST_NOTIFICATION, isFirst);;
-        editor.apply();
-    }
 
-
-    public static boolean isFirstNotification(Context context){
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        return sp.getBoolean(PREF_IS_FIRST_NOTIFICATION,false);
-    }
 }

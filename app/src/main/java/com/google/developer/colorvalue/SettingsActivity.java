@@ -14,7 +14,6 @@ import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 
 import com.google.developer.colorvalue.service.NotificationJobService;
-import com.google.developer.colorvalue.utils.NotificationUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,12 +23,14 @@ public class SettingsActivity extends AppCompatActivity implements
     private static final String TAG = SettingsActivity.class.getSimpleName();
     private static final int JOB_ID = 88;
 
-    private static final int INTERVAL_IN_HOURS = 22;
-    private static final int INTERVAL__IN_MINUTES = 15;
-    private static final long BACK_OFF_TIMING = TimeUnit.MINUTES.toMillis(2);
-    private static final long SYNC_INTERVAL_SECONDS = (int) TimeUnit.HOURS.toMillis(INTERVAL_IN_HOURS);
-    private static final long SYNC_INTERVAL_SECONDS_TEST = TimeUnit.MINUTES.toMillis(INTERVAL__IN_MINUTES);
-    private static final long SYNC_INTERVAL_FLEX_TIME = TimeUnit.MINUTES.toMillis(16);
+    private static final int INTERVAL_IN_HOURS = 24;
+    private static final int INTERVAL_FLEX_TIME_IN_MINUTES=25;
+    private static final int BACK_OFF_TIMING_IN_SECONDS=30;
+
+    private static final long BACK_OFF_TIMING_MILLIS = TimeUnit.SECONDS.toMillis(BACK_OFF_TIMING_IN_SECONDS);
+    private static final long SYNC_INTERVAL_MILLIS =  TimeUnit.HOURS.toMillis(INTERVAL_IN_HOURS);
+    private static final long SYNC_INTERVAL_FLEX_TIME_MILLIS = TimeUnit.MINUTES.toMillis(INTERVAL_FLEX_TIME_IN_MINUTES);
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,35 +64,49 @@ public class SettingsActivity extends AppCompatActivity implements
 
             boolean on = sharedPreferences.getBoolean(notifyKey, false);
 
+            /*  Get the reference to the job scheduler  */
             JobScheduler jobScheduler =
                     (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+
             if(on) {
-                NotificationUtils.setIsFirstNotification(this,true);
+                /*  If turned on, set the flag in shared preferences   */
+//                NotificationUtils.setIsFirstNotification(this,true);
+
+                /*  Define the job using the JobInfo.Builder    */
                 JobInfo.Builder jobInfoBuilder =
                         new JobInfo.Builder(JOB_ID, new ComponentName(this, NotificationJobService.class))
                                 .setPersisted(true)
-                                .setBackoffCriteria(BACK_OFF_TIMING,JobInfo.BACKOFF_POLICY_EXPONENTIAL);
+                                .setBackoffCriteria(BACK_OFF_TIMING_MILLIS,JobInfo.BACKOFF_POLICY_EXPONENTIAL);
 
+                /*  Use periodic job with flex time if greater than API 24  */
                 if(Build.VERSION.SDK_INT >= 24){
-                    jobInfoBuilder.setPeriodic(SYNC_INTERVAL_SECONDS_TEST,SYNC_INTERVAL_FLEX_TIME);
+                    jobInfoBuilder.setPeriodic(SYNC_INTERVAL_MILLIS,SYNC_INTERVAL_FLEX_TIME_MILLIS);
                 }else {
-                    jobInfoBuilder.setPeriodic(SYNC_INTERVAL_SECONDS_TEST);
+                    jobInfoBuilder.setPeriodic(SYNC_INTERVAL_MILLIS);
                 }
 
+                /*  Build the job   */
                 JobInfo jobInfo = jobInfoBuilder.build();
 
-                Log.d(TAG,"Set time "+SYNC_INTERVAL_SECONDS_TEST);
+                Log.d(TAG,"Set time "+SYNC_INTERVAL_MILLIS);
 
+                /*  Schedule the job    */
                 if (jobScheduler != null) {
-                    jobScheduler.schedule(jobInfo);
-                    Log.d(TAG,"Scheduled job");
+                    int result = jobScheduler.schedule(jobInfo);
+
+                    if(result == JobScheduler.RESULT_SUCCESS){
+                        Log.d(TAG,"Scheduled job");
+                    }
                 }
 
             }
             else {
+
+                /*  Notifications turned off, cancel the job    */
                 jobScheduler.cancel(JOB_ID);
             }
-            //  implement JobScheduler for notification {@link ScheduledJobService}
+
+            //  COMPLETED :implement JobScheduler for notification {@link ScheduledJobService}
         }
     }
 

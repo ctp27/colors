@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/card_details_color_name_margin_top"
             android:textSize="@dimen/card_details_color_name_textSize"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            style="?android:textAppearanceLarge"
             app:layout_constraintEnd_toEndOf="@+id/card_details_color_view"
             app:layout_constraintStart_toStartOf="@+id/card_details_color_view"
             app:layout_constraintTop_toBottomOf="@+id/card_details_color_view"
@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/card_details_color_hex_margin_top"
             tools:text="#00F234"
+            style="@android:style/TextAppearance.DeviceDefault"
             app:layout_constraintEnd_toEndOf="@+id/card_details_color_name"
             app:layout_constraintStart_toStartOf="@+id/card_details_color_name"
             app:layout_constraintTop_toBottomOf="@+id/card_details_color_name" />

@@ -59,6 +59,8 @@ public class AddCardActivity extends AppCompatActivity implements
             ContentValues values = new ContentValues(2);
             values.put(CardProvider.Contract.Columns.COLOR_HEX, hex);
             values.put(CardProvider.Contract.Columns.COLOR_NAME, color);
+
+            /*  Inserting card to database using Card service   */
             CardService.insertCard(this,values);
             finish();
         } else {
