@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.google.developer.colorvalue.CardDetailsActivity">
+    tools:context="com.google.developer.colorvalue.CardActivity">
 
 <android.support.constraint.ConstraintLayout
-    tools:context="com.google.developer.colorvalue.CardDetailsActivity"
+    tools:context="com.google.developer.colorvalue.CardActivity"
     android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

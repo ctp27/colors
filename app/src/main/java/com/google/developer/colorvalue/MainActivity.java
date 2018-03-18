@@ -124,8 +124,8 @@ public class MainActivity extends AppCompatActivity
     public void onCardClicked(Card clickedCard) {
 //        : Launch new activity
         Log.d(TAG, clickedCard.getName());
-        Intent intent = new Intent(this,CardDetailsActivity.class);
-        intent.putExtra(CardDetailsActivity.INTENT_PARCEL_EXTRA,clickedCard);
+        Intent intent = new Intent(this,CardActivity.class);
+        intent.putExtra(CardActivity.INTENT_PARCEL_EXTRA,clickedCard);
         startActivity(intent);
 
     }

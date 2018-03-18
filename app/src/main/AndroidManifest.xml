@@ -3,6 +3,8 @@
     package="com.google.developer.colorvalue">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
         android:allowBackup="true"
@@ -58,13 +60,16 @@
                 android:resource="@xml/card_widget" />
         </receiver>
 
-        <activity android:name=".CardDetailsActivity"
+        <activity android:name=".CardActivity"
             android:parentActivityName=".MainActivity"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
+        <service android:name=".service.CardAppWidgetService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
 
 </manifest>

@@ -57,7 +57,6 @@ public class CardSQLite extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO Handle database version upgrades
         db.execSQL("DROP TABLE IF EXISTS " + CardProvider.Contract.TABLE_NAME);
-        onCreate(db);
     }
 
     public static String getColumnString(Cursor cursor, String name) {

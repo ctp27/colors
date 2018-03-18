@@ -11,12 +11,13 @@ import android.widget.TextView;
 
 import com.google.developer.colorvalue.data.Card;
 import com.google.developer.colorvalue.data.CardProvider;
+import com.google.developer.colorvalue.service.CardService;
 import com.google.developer.colorvalue.ui.ColorView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CardDetailsActivity extends AppCompatActivity {
+public class CardActivity extends AppCompatActivity {
 
     public static final String INTENT_PARCEL_EXTRA = "card_detail_extra_object";
 
@@ -63,7 +64,7 @@ public class CardDetailsActivity extends AppCompatActivity {
         switch (id){
             case R.id.action_delete:
                 Uri uri = ContentUris.withAppendedId(CardProvider.Contract.CONTENT_URI,thisCard.getID());
-                getContentResolver().delete(uri,null,null);
+                CardService.deleteCard(this,uri);
                 finish();
                 return true;
             default:

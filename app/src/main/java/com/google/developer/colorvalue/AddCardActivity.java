@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 
 import com.google.developer.colorvalue.data.CardProvider;
+import com.google.developer.colorvalue.service.CardService;
 import com.google.developer.colorvalue.ui.ColorView;
 
 public class AddCardActivity extends AppCompatActivity implements
@@ -58,7 +59,7 @@ public class AddCardActivity extends AppCompatActivity implements
             ContentValues values = new ContentValues(2);
             values.put(CardProvider.Contract.Columns.COLOR_HEX, hex);
             values.put(CardProvider.Contract.Columns.COLOR_NAME, color);
-            getContentResolver().insert(CardProvider.Contract.CONTENT_URI, values);
+            CardService.insertCard(this,values);
             finish();
         } else {
             mName.setError(getString(R.string.error_input_name));

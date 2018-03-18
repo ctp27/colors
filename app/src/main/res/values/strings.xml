@@ -21,5 +21,9 @@
     <string name="pref_summary_notification">Notify to study colors</string>
     <string name="notification_channel_id">notify-color-study</string>
     <string name="notification_channel_name">Study color values</string>
+    <string name="notification_title">Time to Practice!</string>
+    <string name="notification_summary">Its time to revise your color codes</string>
+    <string name="notification_title_first">Notifications Active!</string>
+    <string name="notification_summary_first">We will remind you to study everyday</string>
 
 </resources>
