@@ -55,6 +55,9 @@ public class CardSQLite extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        /*  Change Database version number  */
+        /* Update table schema */
+        /* Haven't made any changes to database since creation   */
 
     }
 
