@@ -23,12 +23,12 @@ public class SettingsActivity extends AppCompatActivity implements
     private static final String TAG = SettingsActivity.class.getSimpleName();
     private static final int JOB_ID = 88;
 
-    private static final int INTERVAL_IN_HOURS = 24;
+    private static final int INTERVAL_IN_HOURS = 15;
     private static final int INTERVAL_FLEX_TIME_IN_MINUTES=25;
     private static final int BACK_OFF_TIMING_IN_SECONDS=30;
 
     private static final long BACK_OFF_TIMING_MILLIS = TimeUnit.SECONDS.toMillis(BACK_OFF_TIMING_IN_SECONDS);
-    private static final long SYNC_INTERVAL_MILLIS =  TimeUnit.HOURS.toMillis(INTERVAL_IN_HOURS);
+    private static final long SYNC_INTERVAL_MILLIS =  TimeUnit.MINUTES.toMillis(INTERVAL_IN_HOURS);
     private static final long SYNC_INTERVAL_FLEX_TIME_MILLIS = TimeUnit.MINUTES.toMillis(INTERVAL_FLEX_TIME_IN_MINUTES);
 
 

@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         getSupportLoaderManager().initLoader(CURSOR_LOADER_ID,null,this);
+
     }
 
     @Override
